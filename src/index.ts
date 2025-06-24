@@ -1,26 +1,5 @@
-type ReturnType = { 
-  add: (item: string) => void; 
-  show: () => string[] 
-};
+const name = "아이유";
+const age = 20;
+const job = "가수";
 
-function createList(): ReturnType {
-  let itemArr: string[] = [];
-
-  return {
-    // add(재료) : 에 재료를 담으면 itemArr 에 추가한다.
-    add(item: string): void {
-      itemArr.push(item);
-    },
-
-    // show() : 전체 itemArr 보여주기
-    show(): string {
-      return itemArr;
-    },
-  };
-}
-//itemArr; // Error 스코프 위반
-
-const myList = createList();
-myList.add("사과");
-myList.add("딸기");
-myList.show(); // ["사과","딸기"]
+console.log(thsi.name);
