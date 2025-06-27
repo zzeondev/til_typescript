@@ -1,17 +1,9 @@
-class Animal {
-  constructor() {
-    this.eye = 2;
+class MethTool {
+  static PI = 3.14;
+  static muliti(x, y) {
+    return x * y;
   }
-  cry() {}
-  eat() {}
 }
 
-class Cat extends Animal {
-  꾹꾹이() {}
-}
-
-new Cat();
-
-class Dog extends Animal {
-  달짖기() {}
-}
+MethTool.속성명;
+MethTool.메서드명();
