@@ -1,10 +1,10 @@
 # class
 
-- 목적은 `인스턴스`, 즉 `new 를 통해서 객체`를 만드는 것
-- 클래스 즉, 설계도를 기반으로 `객체(결과물)`을 만드는 것을 말함.
+- 클래스는 `설계도` 이다.
+- 클래스 즉, 설계도를 기반으로 `객체(결과물-instance)`을 만드는 것을 말함.
 - 목적은 `인스턴스`, 즉 `new 를 통해서 객체`를 대량 생산하는 것
 - class 는 문법으로 존재하며, 실무에서 직접 class 를 `만드는 경우는 극히` 드물다.
-- 백엔드를 js 로 만들 때는 이해 필수입니다.
+- 백엔드를 js 로 만들 때는 이해 필수 입니다.
 
 ## 1. class 기본 모양
 
@@ -16,7 +16,7 @@ class 클래스명 {
 const 인스턴스 = new 클래스명();
 
 class Robot {
-  //코드 블럭
+  // 코드블럭
   // 지역스코프
 }
 const ins = new Robot();
@@ -31,7 +31,7 @@ class 클래스명 {
 const 인스턴스: 클래스명 = new 클래스명();
 
 class Robot {
-  //코드 블럭
+  // 코드블럭
   // 지역스코프
 }
 const ins: Robot = new Robot();
@@ -39,7 +39,7 @@ const ins: Robot = new Robot();
 
 ## 2. class 에서 new 하면 실행되는 함수는 약속
 
-- constructor 메서드 : 생성자 메서드
+- constructor 메서드 : 디폴트 생성자 메서드
 
 ```js
 class 클래스명 {
@@ -77,8 +77,8 @@ const ins: Robot = new Robot();
 
 ## 3. 객체의 `속성`과 `속성 값`을 셋팅한다.
 
-- {`속성` : `속성값`}
-- constructor 를 활용한다
+- {`속성`: `속성값`}
+- constructor 를 활용한다.
 
 ```js
 class Robot {
@@ -105,7 +105,7 @@ console.log(ins4); // Robot { who: '친구야' }
 
 ```ts
 class Robot {
-  // 여기는 클래스 내부라서 규칙이 있습니다.
+  // 여기는 클래스 내부 라서 규칙이 있습니다.
   // 속성을 정의해 줍니다.
   who: string;
 
@@ -115,6 +115,7 @@ class Robot {
     console.log(`${this.who} 안녕`);
   }
 }
+
 const ins1: Robot = new Robot("여러분");
 console.log(ins1); // Robot { who: '여러분' }
 
@@ -157,7 +158,7 @@ ins1.walk();
 
 ```ts
 class Robot {
-  // 속성 정의
+  // 속정 정의
   who: string;
 
   // 메소드축약형
@@ -241,7 +242,7 @@ dog.eye;
 dog.달짖기();
 ```
 
-### 6. 상속에서 속성 값 전달하기
+## 6. 상속에서 속성 값 전달하기
 
 - 부모님에게 값을 전달하기
 
@@ -250,7 +251,7 @@ class Animal {
   constructor(_blood) {
     this.eye = 2;
     // 혈액을 받겠다.
-    this.blood = _blood;
+    this.boold = _blood;
   }
   cry() {}
   eat() {}
@@ -284,12 +285,12 @@ const dog = new Dog("B형");
 class Animal {
   // 속성정의
   eye: number;
-  blood: string;
+  boold: string;
 
   constructor(_blood: string) {
     this.eye = 2;
     // 혈액을 받겠다.
-    this.blood = _blood;
+    this.boold = _blood;
   }
   cry(): void {}
   eat(): void {}
@@ -322,9 +323,9 @@ const dog: Dog = new Dog("B형");
 
 ## 오로지 TypeScript 에만 존재하는 문법
 
-- public 속성 접근 제어자 (누구나 접근가능)
-- private 속성 접근 제어자 (그 누구도 접근불가)
-- protected 속성 접근 제어자 (`상속`받은 대상 접근가능)
+- `public` 속성 접근 제어자 (누구나 접근가능)
+- `private` 속성 접근 제어자 (그 누구도 접근불가)
+- `protected` 속성 접근 제어자(`상속`받은 대상 접근가능)
 
 ```ts
 class BankAccount {
@@ -350,50 +351,50 @@ class Animal {
   private nose: number;
   protected lips: number;
 }
-// 상속받음
+// 상속받음.
 class Cat extends Animal {
   constructor() {
     super();
   }
   show() {
     this.eye; // public 이라서 마음대로 접근
-    this.nose; // ERROR, private 이라서 아무도 접근 못함
-    this.lips; // protected 는 자식이라서 허용됨
+    this.nose; // Error, private 이라서 아무도 접근 못함.
+    this.lips; // protected 는 자식이라서 허용됨.
   }
 }
 
 // 인스턴스 객체 생성
 const cat = new Cat();
 cat.eye; // public 이라서 마음대로 접근
-cat.nose; // ERROR, private 이라서 아무도 접근 못함
-cat.lips; // ERROR, protected 라서 아무도 접근 못함
+cat.nose; // ERROR, private 이라서 아무도 못 접근
+cat.lips; // ERROR, protected 라서 아마도 못 접근
 ```
 
 ## 클래스에서 new 없이 사용가능한 속성과 메서드
 
-- `Math.PI, Math.round(), Math.floor()...`
+- `Math.PI, Math.round(), Math.floor() ...`
 - `static` 을 붙이면 new 없이 사용가능
 
 ```js
-class MethTool {
+class MathTool {
   static PI = 3.14;
   static muliti(x, y) {
     return x * y;
   }
 }
 
-MethTool.PI;
-MethTool.muliti(5, 6);
+MathTool.PI;
+MathTool.muliti(5, 6);
 ```
 
 ```ts
-class MethTool {
+class MathTool {
   static PI: number = 3.14;
   static muliti(x: number, y: number) {
     return x * y;
   }
 }
 
-MethTool.PI;
-MethTool.muliti(5, 6);
+MathTool.PI;
+MathTool.muliti(5, 6);
 ```
