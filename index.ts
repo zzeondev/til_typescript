@@ -1,13 +1,14 @@
-interface 약속 {
-  name: string;
+// 저장하기 관련 클래스
+class TodoStorage<T> {
+  private items: T[] = [];
+  add(item: T): void {
+    this.items.push(item);
+  }
+  read(): T[] {
+    return this.items;
+  }
 }
-class Person implements 약속 {
-  name: string;
-}
-// 아래도 가능함. 하지만?
-type 약속타입 = {
-  name: string;
-};
-class Dog implements 약속타입 {
-  name: string;
-}
+
+const result = new TodoStorage<string>();
+result.add("아이유");
+result.read();
