@@ -1,12 +1,12 @@
-// 기본형 타입도 type 키워드로 별칭을 만들 수 있다.
-type IdolType = {
-  name: string;
-  age: string;
+interface IdolType {
+  readonly name: string; // 읽기 전용
+  age?: string; // 옵셔널
   year: number;
-};
+}
 
 let bts: IdolType = {
-  name: "bts",
-  age: "20대",
-  year: 3030,
+  name: "BTS",
+  year: 2020,
 };
+bts.name = "홍길동"; // Error 변경불가
+bts.year = 2000;
